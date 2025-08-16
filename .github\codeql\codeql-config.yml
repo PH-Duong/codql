@@ -1,0 +1,7 @@
+name: "Custom CodeQL Analysis for Java"
+queries:
+  - uses: ./codeql-queries/*.ql
+paths:
+  - src/  # Quét tất cả file trong src/ (các file .java)
+paths-ignore:
+  - '**/*.test.*'  # Bỏ qua file test nếu có
