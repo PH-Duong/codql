@@ -1,6 +1,17 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2'
+    }
+}
+
 plugins {
     id 'com.android.application'
 }
+
 android {
     compileSdkVersion 26
 
@@ -28,7 +39,7 @@ dependencies {
 }
 
 repositories {
-    maven {
-        url "https://jitpack.io"
-    }
+    google()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
 }
