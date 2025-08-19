@@ -40,7 +40,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     // implementation 'com.github.mrengineer13:toasteroid:1.0.0'
-    implementation 'com.github.marcohc:Toasteroid:master-SNAPSHOT'
+    // implementation 'com.github.marcohc:Toasteroid:master-SNAPSHOT'
+    implementation 'es.dmoral:toasty:1.5.2'
     // Remove 'com.google.android.gms:play-services:7.5.0'
     // Replace or remove Toasteroid if it's unavailable
     // implementation 'com.github.mzelzoghbi:Toasteroid:1.0.1'
