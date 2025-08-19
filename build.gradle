@@ -9,7 +9,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 26
+    // compileSdkVersion 26
+    compileSdkVersion 34
     namespace 'com.android.insecurebankv2'
     defaultConfig {
         applicationId "com.android.insecurebankv2"
@@ -37,6 +38,7 @@ dependencies {
     // Add only the Play Services APIs your app needs, e.g.:
     // implementation 'com.google.android.gms:play-services-auth:7.5.0'
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     // Remove 'com.google.android.gms:play-services:7.5.0'
     // Replace or remove Toasteroid if it's unavailable
     // implementation 'com.github.mzelzoghbi:Toasteroid:1.0.1'
