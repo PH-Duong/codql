@@ -42,7 +42,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.android.insecurebankv2.R;
 /*
 The page that allows the user to transfer an amount between two accounts
 @author Dinesh Shetty
