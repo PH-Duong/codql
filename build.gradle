@@ -14,7 +14,7 @@ plugins {
 
 android {
     compileSdkVersion 26
-
+    namespace 'com.android.insecurebankv2' // Add this line
     defaultConfig {
         applicationId "com.android.insecurebankv2"
         minSdkVersion 15
