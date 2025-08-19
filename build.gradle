@@ -34,9 +34,3 @@ dependencies {
     // implementation 'com.github.marcohc:Toasteroid:2.1.4'
     implementation 'com.github.User:Repo:Tag'
 }
-
-repositories {
-    google()
-    mavenCentral()
-    maven { url "https://jitpack.io" }
-}
