@@ -43,7 +43,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.marcohc.toasteroid.Toasteroid;
+import Toasteroid;
 
 /*
 The page that allows the user to transfer an amount between two accounts
