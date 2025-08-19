@@ -10,7 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.marcohc.toasteroid.Toasteroid;
+// import com.marcohc.toasteroid.Toasteroid;
 
 import java.io.File;
 

@@ -38,8 +38,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.marcohc.toasteroid.Toasteroid;
-
 /*
 The page that accepts new password and passes it on to the change password 
 module. This new password can then be used by the user to log in to the account.

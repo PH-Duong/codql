@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import Toasteroid;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

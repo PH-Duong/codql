@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.insecurebankv2.DoLogin;
-import com.marcohc.toasteroid.Toasteroid;
 
 /*
 The page that accepts username and the password from the user. The credentials 
