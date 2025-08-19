@@ -41,7 +41,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     // implementation 'com.github.mrengineer13:toasteroid:1.0.0'
     // implementation 'com.github.marcohc:Toasteroid:master-SNAPSHOT'
-    implementation 'es.dmoral:toasty:1.5.2'
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
     // Remove 'com.google.android.gms:play-services:7.5.0'
     // Replace or remove Toasteroid if it's unavailable
     // implementation 'com.github.mzelzoghbi:Toasteroid:1.0.1'
