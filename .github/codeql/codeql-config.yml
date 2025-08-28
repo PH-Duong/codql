@@ -1,7 +1,13 @@
 name: "Custom CodeQL Analysis for Java"
+
 queries:
-  - uses: +security-and-quality
+  # Use standard query suites (proper format for config file)
+  - uses: security-and-quality
+  # For Java-specific quality queries
+  - uses: security-extended
+
 paths:
-  - src/  # Quét tất cả file trong src/ (các file .java)
+  - src/  # Scan all files in src/ (.java files)
 paths-ignore:
-  - '**/*.test.*'  # Bỏ qua file test nếu có
+  - '**/*.test.*'  # Ignore test files if any
+  - '**/test/**'   # Ignore test directories
