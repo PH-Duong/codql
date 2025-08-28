@@ -25,15 +25,111 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Lấy toàn bộ lịch sử để phân tích tốt hơn
 
+    # Cài đặt JDK 11 cho công cụ Android SDK
+    - name: Setup JDK 11 for Android tools
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "11"
+
+    # Cài đặt Android SDK (nếu cần)
+    - name: Install Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        cmdline-tools-version: 9862592
+
+    # Chấp nhận giấy phép Android
+    - name: Accept Android licenses
+      run: yes | sdkmanager --licenses || true
+
+    # Cài đặt platforms & build-tools
+    - name: Install Android dependencies
+      run: |
+        sdkmanager "platform-tools" "platforms;android-29" "build-tools;29.0.2"
+
+    # Chuyển sang JDK 8 cho việc build
+    - name: Setup JDK 8 for build
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "8"
+
+    # Khởi tạo CodeQL với nhiều loại query
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         config-file: .github/codeql/codeql-config.yml  # chọn config
+        # Sử dụng nhiều loại query hơn
+        queries: |
+          +security-extended
+          +security-and-quality
+          +security-experimental
 
+    # Make gradlew executable
+    - name: Set execute permission for gradlew
+      run: chmod +x ./gradlew
+      
+    # Clean project before building
+    - name: Clean project
+      run: ./gradlew clean --no-daemon
+      continue-on-error: true  # Tiếp tục ngay cả khi có lỗi
+
+    # Tự build cho Android
+    - name: Build with Gradle (Android)
+      run: ./gradlew assembleDebug --no-daemon
+      continue-on-error: true  # Tiếp tục ngay cả khi có lỗi
+
+    # Sử dụng Autobuild làm backup
     - name: Autobuild (for Java)
-      uses: github/codeql-action/autobuild@v3  # Tự build Java code nếu cần
+      uses: github/codeql-action/autobuild@v3
+      if: always()  # Luôn chạy bước này
 
+    # Phân tích kết quả CodeQL
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: true
+# name: CodeQL Analysis
+
+# on:
+#   push:
+#     branches: [main]  # Chạy khi push vào main
+#   pull_request:
+#     branches: [main]  # Chạy khi có pull request
+#   schedule:
+#     - cron: '0 0 * * 0'  # Chạy hàng tuần vào Chủ Nhật lúc 0h
+
+# jobs:
+#   analyze:
+#     name: Analyze
+#     runs-on: ubuntu-latest
+#     permissions:
+#       actions: read
+#       contents: read
+#       security-events: write
+
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         language: ['java']  # Ngôn ngữ là Java
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v4
+
+#     - name: Initialize CodeQL
+#       uses: github/codeql-action/init@v3
+#       with:
+#         languages: ${{ matrix.language }}
+#         config-file: .github/codeql/codeql-config.yml  # chọn config
+
+#     - name: Autobuild (for Java)
+#       uses: github/codeql-action/autobuild@v3  # Tự build Java code nếu cần
+
+#     - name: Perform CodeQL Analysis
+#       uses: github/codeql-action/analyze@v3
