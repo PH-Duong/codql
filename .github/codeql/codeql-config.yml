@@ -1,6 +1,6 @@
 name: "Custom CodeQL Analysis for Java"
 queries:
-  - uses: ./codeql-queries/
+  - uses: +security-and-quality
 paths:
   - src/  # Quét tất cả file trong src/ (các file .java)
 paths-ignore:
